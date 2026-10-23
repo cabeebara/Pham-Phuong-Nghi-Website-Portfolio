@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" width="100%" height="100%" class="sketch-svg">
+  
+  <defs>
+    <!-- Paper Texture Filter -->
+    <filter id="paper-texture" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" result="noise" />
+      <feDiffuseLighting in="noise" lighting-color="#fdfbf7" surfaceScale="1.2" result="light">
+        <feDistantLight azimuth="60" elevation="50" />
+      </feDiffuseLighting>
+      <feBlend mode="multiply" in="SourceGraphic" in2="light" />
+    </filter>
+
+    <!-- Watercolor Bleed Filter -->
+    <filter id="watercolor-wash" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="3" result="rough" />
+      <feDisplacementMap in="SourceGraphic" in2="rough" scale="8" xChannelSelector="R" yChannelSelector="G" result="displaced" />
+      <feGaussianBlur stdDeviation="2.5" result="blurred" />
+      <feMerge>
+        <feMergeNode in="blurred" />
+        <feMergeNode in="displaced" opacity="0.8" />
+      </feMerge>
+    </filter>
+
+    <!-- Ink Hatching Pattern 45 deg -->
+    <pattern id="hatch-45" width="10" height="10" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#2b2b2b" stroke-width="0.8" opacity="0.45" />
+    </pattern>
+
+    <!-- Cross Hatching Pattern -->
+    <pattern id="cross-hatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#1f1f1f" stroke-width="0.7" opacity="0.4" />
+      <line x1="0" y1="0" x2="8" y2="0" stroke="#1f1f1f" stroke-width="0.7" opacity="0.4" />
+    </pattern>
+
+    <!-- Dense Hatching for Architectural Poche -->
+    <pattern id="dense-poche" width="6" height="6" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#202020" stroke-width="1.2" opacity="0.65" />
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="820" fill="#faf8f5" />
+
+  <!-- Drafting Desk Surface with Blueprint Grid -->
+  <g opacity="0.25" stroke="#72a9e8" stroke-width="0.8">
+    <pattern id="drafting-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="40" y2="0" stroke="#72a9e8" stroke-width="0.7" />
+      <line x1="0" y1="0" x2="0" y2="40" stroke="#72a9e8" stroke-width="0.7" />
+    </pattern>
+    <rect width="1200" height="820" fill="url(#drafting-grid)" />
+  </g>
+
+  <!-- Drafting Tools on Desk -->
+  <!-- 45-Degree Acrylic Set Square / Triangle Ruler (Top-Left) -->
+  <g transform="translate(60, 40) rotate(-15)" stroke="#1c1c1c" stroke-width="1.8" fill="none">
+    <polygon points="0,180 180,180 0,0" fill="#72a9e8" fill-opacity="0.2" filter="url(#watercolor-wash)" stroke-width="2" />
+    <polygon points="25,155 130,155 25,50" fill="#faf8f5" stroke-width="1.5" />
+    <!-- Ruler Tick Marks -->
+    <line x1="0" y1="180" x2="180" y2="180" stroke-width="2" />
+    <line x1="20" y1="180" x2="20" y2="170" stroke-width="1.2" />
+    <line x1="40" y1="180" x2="40" y2="165" stroke-width="1.2" />
+    <line x1="60" y1="180" x2="60" y2="170" stroke-width="1.2" />
+    <line x1="80" y1="180" x2="80" y2="165" stroke-width="1.2" />
+    <line x1="100" y1="180" x2="100" y2="170" stroke-width="1.2" />
+    <line x1="120" y1="180" x2="120" y2="165" stroke-width="1.2" />
+    <line x1="140" y1="180" x2="140" y2="170" stroke-width="1.2" />
+    <line x1="160" y1="180" x2="160" y2="165" stroke-width="1.2" />
+  </g>
+
+  <!-- Soft Pencil Eraser (Top-Right) -->
+  <g transform="translate(1060, 60) rotate(20)" stroke="#1c1c1c" stroke-width="1.5">
+    <polygon points="0,0 55,0 45,30 -10,30" fill="#f7f3eb" />
+    <polygon points="55,0 75,10 65,40 45,30" fill="#ece4d8" />
+    <polygon points="-10,30 45,30 65,40 10,40" fill="#ded5c4" />
+    <rect x="15" y="0" width="25" height="30" fill="#72a9e8" fill-opacity="0.6" filter="url(#watercolor-wash)" />
+  </g>
+
+  <!-- ================= OPEN HARDCOVER SKETCHBOOK ================= -->
+  <!-- Sketchbook Cast Shadow -->
+  <rect x="70" y="80" width="1060" height="670" rx="16" fill="#72a9e8" fill-opacity="0.25" filter="url(#watercolor-wash)" />
+  <rect x="65" y="75" width="1070" height="675" rx="14" fill="#2b2620" opacity="0.15" />
+
+  <!-- Hardcover Backing Trim (Leather/Board Edges) -->
+  <rect x="60" y="70" width="1080" height="680" rx="12" fill="#2d2a26" stroke="#1c1c1c" stroke-width="2.5" />
+  <rect x="65" y="75" width="1070" height="670" rx="10" fill="#3d3730" />
+
+  <!-- Left Page Stack Thickness (3D Edge) -->
+  <polygon points="75,80 85,90 85,730 75,740" fill="#ece4d8" stroke="#1c1c1c" stroke-width="1" />
+  <!-- Right Page Stack Thickness -->
+  <polygon points="1125,80 1115,90 1115,730 1125,740" fill="#ece4d8" stroke="#1c1c1c" stroke-width="1" />
+
+  <!-- Open Pages Surface (Cream Art Paper) -->
+  <!-- Left Page (x=85 to x=590) -->
+  <path d="M 85 90 Q 340 85 590 95 L 590 735 Q 340 725 85 730 Z" fill="#ffffff" stroke="#1c1c1c" stroke-width="2" />
+  <!-- Right Page (x=610 to x=1115) -->
+  <path d="M 610 95 Q 860 85 1115 90 L 1115 730 Q 860 725 610 735 Z" fill="#ffffff" stroke="#1c1c1c" stroke-width="2" />
+
+  <!-- Book Spine Center Gutter (Crease & Shadow) -->
+  <rect x="590" y="90" width="20" height="645" fill="#ece5d8" stroke="#1c1c1c" stroke-width="1.5" />
+  <line x1="600" y1="90" x2="600" y2="735" stroke="#1c1c1c" stroke-width="2.5" />
+  <line x1="595" y1="92" x2="595" y2="733" stroke="#888" stroke-width="1" stroke-dasharray="8,6" />
+  <line x1="605" y1="92" x2="605" y2="733" stroke="#888" stroke-width="1" stroke-dasharray="8,6" />
+
+  <!-- Silk Ribbon Bookmark draped down center -->
+  <path d="M 600 90 Q 590 350 605 520 Q 620 680 595 780" fill="none" stroke="#72a9e8" stroke-width="9" stroke-linecap="square" opacity="0.8" />
+  <path d="M 600 90 Q 590 350 605 520 Q 620 680 595 780" fill="none" stroke="#1c1c1c" stroke-width="1.2" />
+
+  <!-- Soft page margins guide (no duplicate text) -->
+  <line x1="95" y1="105" x2="575" y2="105" stroke="#72a9e8" stroke-width="0.8" opacity="0.3" stroke-dasharray="6,4" />
+  <line x1="625" y1="105" x2="1105" y2="105" stroke="#72a9e8" stroke-width="0.8" opacity="0.3" stroke-dasharray="6,4" />
+
+  <!-- ================= DRAFTING FOUNTAIN PEN (LOWER RIGHT) ================= -->
+  <!-- Architectural Drafting Fineliner / Nib Pen resting across corner -->
+  <g id="drafting-pen" transform="translate(1030, 665) rotate(-38)">
+    <!-- Pen Cast Shadow -->
+    <rect x="-8" y="12" width="280" height="18" rx="6" fill="#72a9e8" fill-opacity="0.4" filter="url(#watercolor-wash)" />
+    
+    <!-- Pen Barrel -->
+    <rect x="0" y="0" width="180" height="20" rx="3" fill="#1c1c1c" stroke="#1c1c1c" stroke-width="1.5" />
+    <!-- Ink Window / Blue Accent Band (#72a9e8) -->
+    <rect x="180" y="2" width="16" height="16" fill="#72a9e8" fill-opacity="0.85" stroke="#1c1c1c" stroke-width="1" />
+    
+    <!-- Pen Grip Section -->
+    <rect x="196" y="3" width="40" height="14" fill="#2d2a26" stroke="#1c1c1c" stroke-width="1" />
+    <line x1="205" y1="3" x2="205" y2="17" stroke="#666" stroke-width="0.8" />
+    <line x1="215" y1="3" x2="215" y2="17" stroke="#666" stroke-width="0.8" />
+    <line x1="225" y1="3" x2="225" y2="17" stroke="#666" stroke-width="0.8" />
+
+    <!-- Chrome Nib Collar -->
+    <polygon points="236,4 246,6 246,14 236,16" fill="#d8d4cd" stroke="#1c1c1c" stroke-width="1" />
+
+    <!-- Two-Tone Calligraphy / Drafting Nib -->
+    <polygon points="246,6 278,10 246,14" fill="#d8d4cd" stroke="#1c1c1c" stroke-width="1.2" />
+    <polygon points="246,7 266,10 246,13" fill="#72a9e8" fill-opacity="0.75" />
+    <!-- Nib Breather Hole & Slit -->
+    <line x1="258" y1="10" x2="278" y2="10" stroke="#1c1c1c" stroke-width="1" />
+    <circle cx="258" cy="10" r="1.5" fill="#1c1c1c" />
+
+    <!-- Chrome Clip on Cap End -->
+    <rect x="15" y="-5" width="70" height="5" rx="2" fill="#d8d4cd" stroke="#1c1c1c" stroke-width="1" />
+    <circle cx="82" cy="-2.5" r="3.5" fill="#d8d4cd" stroke="#1c1c1c" stroke-width="1" />
+  </g>
+</svg>
