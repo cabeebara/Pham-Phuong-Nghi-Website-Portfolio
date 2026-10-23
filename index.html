@@ -10,9 +10,1428 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
   
-  <!-- CSS Stylesheets -->
+  <!-- External CSS fallbacks for local & server environments -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/sketch-theme.css">
+
+  <!-- INLINED CSS: Guaranteed to load everywhere (GitHub Pages, Raw, local, CDN) -->
+  <style>
+/* ==========================================================================
+   PORTFOLIO ARCHITECTURAL SKETCH STYLESHEET
+   Artist: Pham Phuong Nghi
+   Font: Montserrat
+   Style: Architectural Ink Sketch & Watercolor Highlight (#72a9e8, 60% opacity)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
+:root {
+  --font-main: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  /* Color Palette */
+  --bg-paper: #faf8f5;
+  --bg-paper-alt: #f4efe6;
+  --bg-card: #ffffff;
+  --ink-primary: #1c1c1c;
+  --ink-secondary: #4a4a4a;
+  --ink-muted: #787570;
+  --ink-border: #222222;
+  
+  /* Signature Watercolor (#72a9e8 with 60% opacity) */
+  --watercolor-blue: #72a9e8;
+  --watercolor-60: rgba(114, 169, 232, 0.60);
+  --watercolor-30: rgba(114, 169, 232, 0.30);
+  --watercolor-15: rgba(114, 169, 232, 0.15);
+  --watercolor-85: rgba(114, 169, 232, 0.85);
+  
+  /* Hand-drawn borders */
+  --sketch-border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  --sketch-border-radius-sm: 180px 10px 190px 10px/10px 190px 10px 180px;
+  --sketch-shadow: 4px 5px 0px rgba(28, 28, 28, 0.85), 7px 9px 0px var(--watercolor-60);
+  --sketch-shadow-hover: 6px 7px 0px rgba(28, 28, 28, 0.95), 10px 12px 0px var(--watercolor-85);
+  
+  --transition-speed: 0.35s;
+  --ease-sketch: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: var(--font-main);
+  background-color: var(--bg-paper);
+  color: var(--ink-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  user-select: none;
+}
+
+/* Paper Grain Texture Overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* ==========================================================================
+   APP SHELL LAYOUT
+   ========================================================================== */
+#app {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 40%, #ffffff 0%, #faf8f5 65%, #f2ece1 100%);
+}
+
+/* ==========================================================================
+   TOP NAVIGATION BAR
+   ========================================================================== */
+.top-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  z-index: 100;
+  pointer-events: auto;
+}
+
+.nav-left-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Hand-drawn Nav Buttons */
+.nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 16px;
+  background: var(--bg-card);
+  color: var(--ink-primary);
+  border: 2px solid var(--ink-border);
+  border-radius: var(--sketch-border-radius-sm);
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  cursor: pointer;
+  box-shadow: 2.5px 3px 0px var(--ink-border), 4px 5px 0px var(--watercolor-60);
+  transition: all 0.2s var(--ease-sketch);
+  text-decoration: none;
+}
+
+.nav-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 5px 0px var(--ink-border), 7px 8px 0px var(--watercolor-85);
+  background: #ffffff;
+}
+
+.nav-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px var(--ink-border);
+}
+
+.nav-btn svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--ink-primary);
+  stroke-width: 2.2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.2s;
+}
+
+.nav-btn:hover svg {
+  transform: scale(1.1);
+}
+
+.nav-btn.btn-disabled {
+  opacity: 0.45;
+  pointer-events: none;
+  box-shadow: 1px 1px 0px var(--ink-border);
+}
+
+/* Breadcrumb indicator */
+.nav-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  padding: 4px 12px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1.5px dashed var(--ink-muted);
+  border-radius: 4px;
+}
+
+.breadcrumb-separator {
+  color: var(--watercolor-blue);
+  font-weight: 800;
+}
+
+.breadcrumb-active {
+  color: var(--ink-primary);
+  font-weight: 700;
+}
+
+/* Sound & Help controls */
+.nav-right-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-right: 240px; /* Leave space for docked profile badge */
+}
+
+.icon-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 2px solid var(--ink-border);
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--ink-border), 3px 3px 0 var(--watercolor-60);
+  transition: all 0.2s;
+}
+
+.icon-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 3px 3px 0 var(--ink-border), 5px 5px 0 var(--watercolor-85);
+}
+
+.icon-btn svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--ink-primary);
+  stroke-width: 2;
+  fill: none;
+}
+
+/* ==========================================================================
+   PROFILE BOX (Starts Centered -> Docks to Top-Right after 5s)
+   User Request:
+   "Pham Phuong Nghi
+    12 Physics
+    High School for the Gifted
+    Sau tầm 5 giây, box thu nhỏ và đặt ở góc trên, bên phải màn hình.
+    Có hoạt ảnh mờ dần và hiện ra lại dần ở vị trí sau. Box này luôn tồn tại ở mọi giao diện"
+   ========================================================================== */
+.profile-box-container {
+  position: fixed;
+  z-index: 1000;
+  transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: auto;
+}
+
+/* Initial Modal State (Centered, Prominent) */
+.profile-box-container.state-modal {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  width: min(480px, 90vw);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25), 0 0 0 1000px rgba(28, 28, 28, 0.35);
+}
+
+/* Docked State (Top-Right Corner across all views) */
+.profile-box-container.state-docked {
+  top: 14px;
+  right: 28px;
+  transform: translate(0, 0) scale(1);
+  width: 250px;
+  box-shadow: none;
+}
+
+/* Card inner content */
+.profile-card {
+  position: relative;
+  background: #ffffff;
+  border: 2.5px solid var(--ink-border);
+  border-radius: var(--sketch-border-radius);
+  padding: 24px 28px;
+  box-shadow: var(--sketch-shadow);
+  transition: all 0.4s var(--ease-sketch);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.profile-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: var(--watercolor-60);
+  border-bottom: 1.5px solid var(--ink-border);
+}
+
+/* Decorative watercolor stroke across header */
+.profile-watercolor-splash {
+  position: absolute;
+  top: -15px;
+  right: -25px;
+  width: 140px;
+  height: 80px;
+  background: var(--watercolor-60);
+  border-radius: 50%;
+  filter: blur(12px);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* In Modal State */
+.profile-box-container.state-modal .profile-card {
+  padding: 32px 36px;
+  text-align: center;
+}
+
+.profile-box-container.state-modal .profile-name {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: var(--ink-primary);
+  margin-bottom: 6px;
+  position: relative;
+  display: inline-block;
+}
+
+.profile-box-container.state-modal .profile-name::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 5%;
+  width: 90%;
+  height: 7px;
+  background: var(--watercolor-60);
+  z-index: -1;
+  border-radius: 4px;
+}
+
+.profile-box-container.state-modal .profile-grade {
+  font-size: 16px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 4px;
+  letter-spacing: 1px;
+}
+
+.profile-box-container.state-modal .profile-school {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-muted);
+  letter-spacing: 0.5px;
+}
+
+.profile-box-container.state-modal .profile-timer-bar {
+  margin-top: 18px;
+  height: 4px;
+  width: 100%;
+  background: #eee;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.profile-box-container.state-modal .profile-timer-progress {
+  height: 100%;
+  width: 100%;
+  background: var(--watercolor-blue);
+  animation: timerProgress 5s linear forwards;
+}
+
+@keyframes timerProgress {
+  from { width: 100%; }
+  to { width: 0%; }
+}
+
+.profile-box-container.state-modal .profile-hint {
+  margin-top: 12px;
+  font-size: 11px;
+  color: var(--ink-muted);
+  font-style: italic;
+}
+
+/* In Docked State */
+.profile-box-container.state-docked .profile-card {
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: 24px;
+  box-shadow: 2px 3px 0 var(--ink-border), 4px 5px 0 var(--watercolor-60);
+}
+
+.profile-box-container.state-docked:hover .profile-card {
+  transform: translateY(-2px);
+  box-shadow: 3px 4px 0 var(--ink-border), 6px 7px 0 var(--watercolor-85);
+}
+
+.profile-box-container.state-docked .profile-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--watercolor-60);
+  border: 1.5px solid var(--ink-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 11px;
+  color: var(--ink-primary);
+  flex-shrink: 0;
+}
+
+.profile-box-container.state-docked .profile-info {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.profile-box-container.state-docked .profile-name {
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.profile-box-container.state-docked .profile-grade {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--ink-muted);
+  white-space: nowrap;
+}
+
+.profile-box-container.state-docked .profile-school,
+.profile-box-container.state-docked .profile-timer-bar,
+.profile-box-container.state-docked .profile-hint {
+  display: none;
+}
+
+/* ==========================================================================
+   VIEW CONTAINER & TRANSITIONS
+   "Mỗi bước chuyển giao diện đều cần có hoạt ảnh (fade/zoom hoặc morph)"
+   ========================================================================== */
+.view-viewport {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.view-section {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: scale(0.96);
+  transition: opacity 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+              transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+              visibility 0.5s;
+}
+
+.view-section.view-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+.view-section.view-zooming-out {
+  opacity: 0;
+  transform: scale(1.08);
+  pointer-events: none;
+}
+
+.view-section.view-zooming-in {
+  opacity: 0;
+  transform: scale(0.92);
+  pointer-events: none;
+}
+
+/* Watercolor Wash Transition Overlay */
+.transition-curtain {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(114, 169, 232, 0.85) 0%, rgba(250, 248, 245, 0.95) 100%);
+  z-index: 500;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.transition-curtain.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ==========================================================================
+   VIEW 1: HOME (MUSEUM INTERIOR 1-POINT PERSPECTIVE)
+   ========================================================================== */
+#view-home {
+  width: 100%;
+  height: 100%;
+}
+
+.svg-stage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.svg-stage svg {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 25px rgba(0,0,0,0.06));
+}
+
+/* Museum Hotspots Interactivity */
+.museum-hotspot {
+  transition: all 0.3s var(--ease-sketch);
+}
+
+.museum-hotspot:hover .hotspot-wash {
+  fill-opacity: 0.45 !important;
+}
+
+.museum-hotspot:hover .arrow-group {
+  transform: translateY(-8px);
+  filter: drop-shadow(0 8px 12px rgba(114, 169, 232, 0.6));
+}
+
+.museum-hotspot:hover .arrow-wash {
+  fill-opacity: 0.85 !important;
+}
+
+.museum-hotspot:hover .signboard-group {
+  transform: scale(1.04);
+}
+
+.museum-hotspot:hover .sign-wash {
+  fill-opacity: 0.9 !important;
+}
+
+.arrow-group, .signboard-group {
+  transition: transform 0.3s var(--ease-sketch), filter 0.3s;
+}
+
+/* ==========================================================================
+   VIEW 2: PAST (ROTUNDA FLOOR PLAN WITH 6 ROOMS)
+   ========================================================================== */
+#view-past-rotunda {
+  width: 100%;
+  height: 100%;
+}
+
+.floorplan-room-group {
+  transition: all 0.3s var(--ease-sketch);
+}
+
+.floorplan-room-group:hover .room-wash {
+  fill-opacity: 0.55 !important;
+}
+
+.floorplan-room-group:hover .room-rect {
+  stroke-width: 3.5;
+  filter: drop-shadow(0 6px 16px rgba(114, 169, 232, 0.5));
+}
+
+.floorplan-room-group:hover .room-btn {
+  fill: var(--watercolor-blue) !important;
+}
+
+/* ==========================================================================
+   VIEW 3: PAST (STANDARD GALLERY ROOM VIEW)
+   Adaptive Picture Frame conforming to image aspect ratio + navigation arrows
+   ========================================================================== */
+#view-past-gallery {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px 20px 40px;
+}
+
+.gallery-stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: calc(100% - 70px);
+}
+
+/* Adaptive Framed Artwork Container */
+.gallery-artwork-frame {
+  position: relative;
+  background: #ffffff;
+  padding: 18px;
+  border: 3.5px solid var(--ink-border);
+  border-radius: 4px;
+  box-shadow: 6px 8px 0px var(--ink-border), 12px 14px 0px var(--watercolor-60);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: min(85vw, 860px);
+  max-height: min(72vh, 600px);
+  perspective: 1000px;
+  transition: transform 0.5s cubic-bezier(0.3, 1, 0.4, 1), box-shadow 0.3s;
+}
+
+.gallery-artwork-frame:hover {
+  box-shadow: 8px 10px 0px var(--ink-border), 15px 18px 0px var(--watercolor-85);
+}
+
+/* Hanging wire simulation */
+.gallery-hanging-wires {
+  position: absolute;
+  top: -80px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  pointer-events: none;
+}
+
+.gallery-image-viewport {
+  position: relative;
+  overflow: hidden;
+  border: 1.5px solid var(--ink-border);
+  background: #f7f4ed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-in;
+}
+
+.gallery-artwork-img {
+  max-width: 100%;
+  max-height: calc(70vh - 120px);
+  object-fit: contain;
+  display: block;
+  transition: transform 0.45s var(--ease-sketch), opacity 0.35s;
+}
+
+/* Morph / 3D flip animation when cycling paintings */
+.gallery-artwork-frame.flip-next {
+  animation: flipNext 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.gallery-artwork-frame.flip-prev {
+  animation: flipPrev 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes flipNext {
+  0% { transform: scale(1) rotateY(0deg); opacity: 1; }
+  50% { transform: scale(0.92) rotateY(25deg); opacity: 0.6; }
+  100% { transform: scale(1) rotateY(0deg); opacity: 1; }
+}
+
+@keyframes flipPrev {
+  0% { transform: scale(1) rotateY(0deg); opacity: 1; }
+  50% { transform: scale(0.92) rotateY(-25deg); opacity: 0.6; }
+  100% { transform: scale(1) rotateY(0deg); opacity: 1; }
+}
+
+/* Gallery Navigation Arrows (Hand-drawn Ink style with Watercolor hover) */
+.gallery-nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 2.5px solid var(--ink-border);
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 3px 4px 0px var(--ink-border), 5px 6px 0px var(--watercolor-60);
+  transition: all 0.25s var(--ease-sketch);
+  z-index: 10;
+}
+
+.gallery-nav-arrow.arrow-prev {
+  left: max(20px, calc(50% - 480px));
+}
+
+.gallery-nav-arrow.arrow-next {
+  right: max(20px, calc(50% - 480px));
+}
+
+.gallery-nav-arrow:hover {
+  background: #ffffff;
+  transform: translateY(-50%) scale(1.12);
+  box-shadow: 4px 5px 0px var(--ink-border), 8px 9px 0px var(--watercolor-85);
+}
+
+.gallery-nav-arrow svg {
+  width: 26px;
+  height: 26px;
+  stroke: var(--ink-primary);
+  stroke-width: 2.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Artwork Info Plaque under frame */
+.gallery-artwork-info {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 16px;
+}
+
+.artwork-title {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--ink-primary);
+}
+
+.artwork-counter {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  padding: 3px 10px;
+  background: var(--watercolor-60);
+  border: 1.2px solid var(--ink-border);
+  border-radius: 12px;
+}
+
+.artwork-zoom-hint {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.artwork-zoom-hint:hover {
+  color: var(--watercolor-blue);
+}
+
+/* ==========================================================================
+   VIEW 4: PAST (MODELS ROOM WITH 2 PEDESTALS)
+   ========================================================================== */
+#view-past-models {
+  width: 100%;
+  height: 100%;
+}
+
+.clickable-pedestal {
+  transition: all 0.3s var(--ease-sketch);
+}
+
+.clickable-pedestal:hover .vitrine-glass {
+  fill-opacity: 0.35 !important;
+  stroke-width: 3;
+}
+
+.clickable-pedestal:hover .pedestal-base {
+  fill: #faf8f5 !important;
+}
+
+.clickable-pedestal:hover .pedestal-plaque rect:first-child {
+  fill-opacity: 0.9 !important;
+}
+
+.clickable-pedestal:hover {
+  filter: drop-shadow(0 10px 20px rgba(114, 169, 232, 0.5));
+}
+
+/* ==========================================================================
+   VIEW 5: PRESENT (UNDER-CONSTRUCTION STUDIO & PROJECT SHOWCASE)
+   ========================================================================== */
+#view-present-studio {
+  width: 100%;
+  height: 100%;
+}
+
+.clickable-crate {
+  transition: all 0.3s var(--ease-sketch);
+}
+
+.clickable-crate:hover .crate-aura {
+  fill-opacity: 0.75 !important;
+  rx: 290 !important;
+  ry: 105 !important;
+}
+
+.clickable-crate:hover .crate-face {
+  fill: #ffffff !important;
+}
+
+.clickable-crate:hover .cta-pulse {
+  fill-opacity: 1 !important;
+}
+
+.clickable-crate:hover .crate-cta {
+  transform: translate(260px, 390px) scale(1.06);
+}
+
+.crate-cta {
+  transition: transform 0.3s var(--ease-sketch);
+}
+
+/* Present Project Showcase Modal / Overlay */
+.present-showcase-container {
+  position: absolute;
+  inset: 0;
+  background: rgba(250, 248, 245, 0.92);
+  backdrop-filter: blur(8px);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px 20px 40px;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.95);
+  transition: all 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.present-showcase-container.active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+.present-close-btn {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--ink-border);
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 2px 3px 0 var(--ink-border), 4px 5px 0 var(--watercolor-60);
+  transition: all 0.2s;
+  z-index: 60;
+}
+
+.present-close-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 3px 4px 0 var(--ink-border), 6px 7px 0 var(--watercolor-85);
+}
+
+/* Present Brief Card */
+.present-brief-card {
+  margin-top: 16px;
+  max-width: 860px;
+  width: 90%;
+  background: #ffffff;
+  border: 2px solid var(--ink-border);
+  border-radius: var(--sketch-border-radius-sm);
+  padding: 14px 22px;
+  box-shadow: 3px 4px 0 var(--ink-border), 6px 8px 0 var(--watercolor-60);
+}
+
+.present-brief-card h4 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-primary);
+  margin-bottom: 5px;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.present-brief-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  background: var(--watercolor-60);
+  border-radius: 10px;
+  font-size: 10px;
+}
+
+.present-brief-text {
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: #333333;
+  font-weight: 400;
+}
+
+/* ==========================================================================
+   VIEW 6: FUTURE (OPEN SKETCHBOOK: THE INNER ORBITS & THE HUMANE CHAOS)
+   ========================================================================== */
+#view-future-sketchbook {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.sketchbook-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 75px 20px 20px 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Master container locked to exact 1200x820 aspect ratio of the SVG book */
+.sketchbook-book-container {
+  position: relative;
+  width: 100%;
+  max-width: min(1160px, calc((100vh - 100px) * (1200 / 820)));
+  aspect-ratio: 1200 / 820;
+  margin: auto;
+  box-sizing: border-box;
+}
+
+/* Background Sketchbook Desk SVG scales seamlessly inside the container */
+.sketchbook-bg-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.sketchbook-bg-svg svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Sketchbook Content Grid: sits 100% inside the cream pages of the book */
+.sketchbook-content-grid {
+  position: absolute;
+  top: 13.5%;
+  bottom: 12.5%;
+  left: 8.5%;
+  right: 8.5%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 5%;
+  z-index: 10;
+  pointer-events: auto;
+  box-sizing: border-box;
+}
+
+/* Common Page Header */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  padding-bottom: 4px;
+  border-bottom: 1.2px solid var(--ink-border);
+  flex-shrink: 0;
+}
+
+.page-title-tag {
+  display: inline-block;
+  padding: 2px 7px;
+  background: var(--watercolor-60);
+  border: 1.2px solid var(--ink-border);
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: var(--ink-primary);
+  line-height: 1.2;
+}
+
+.page-subtitle {
+  font-size: 8.5px;
+  font-weight: 600;
+  color: var(--ink-muted);
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+}
+
+/* Left Page: 9-Grid (The Inner Orbits) */
+.page-inner-orbits {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.orbits-9grid {
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 5px;
+}
+
+.orbit-card {
+  position: relative;
+  background: #ffffff;
+  border: 1.4px solid var(--ink-border);
+  border-radius: 2px;
+  padding: 3px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  box-shadow: 1.5px 1.5px 0 var(--ink-border);
+  transition: all 0.2s var(--ease-sketch);
+  overflow: hidden;
+  min-height: 0;
+}
+
+.orbit-card:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 2px 2.5px 0 var(--ink-border), 3.5px 4.5px 0 var(--watercolor-85);
+  border-color: var(--watercolor-blue);
+}
+
+.orbit-card-thumb {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  overflow: hidden;
+  background: #fdfbf7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orbit-card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.orbit-card-label {
+  padding: 2px 0 0 0;
+  text-align: center;
+  font-size: 8px;
+  font-weight: 700;
+  color: var(--ink-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 0.2px;
+  flex-shrink: 0;
+  line-height: 1.1;
+}
+
+/* Right Page: Feature Artwork (The Humane Chaos) */
+.page-humane-chaos {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.humane-chaos-card {
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  background: #ffffff;
+  border: 2px solid var(--ink-border);
+  border-radius: 3px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2.5px 3px 0 var(--ink-border), 5px 6px 0 var(--watercolor-60);
+  cursor: pointer;
+  transition: all 0.25s var(--ease-sketch);
+  overflow: hidden;
+}
+
+.humane-chaos-card:hover {
+  transform: translateY(-2px) scale(1.015);
+  box-shadow: 3.5px 4px 0 var(--ink-border), 7px 8px 0 var(--watercolor-85);
+}
+
+.humane-chaos-thumb {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  overflow: hidden;
+  background: #fdfbf7;
+  border: 1.2px solid var(--ink-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.humane-chaos-thumb img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.humane-chaos-meta {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.humane-chaos-meta h3 {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--ink-primary);
+}
+
+.humane-chaos-meta span {
+  font-size: 8.5px;
+  font-weight: 600;
+  color: var(--watercolor-blue);
+  letter-spacing: 0.4px;
+}
+
+/* ==========================================================================
+   LIGHTBOX / FULLSCREEN ZOOM MODAL
+   User Request: "Khi bấm vào từng ảnh, chúng cũng sẽ hiện ra trên màn hình,
+   có dấu x để tắt và có thể zoom"
+   ========================================================================== */
+.lightbox-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 20, 22, 0.92);
+  backdrop-filter: blur(10px);
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s;
+}
+
+.lightbox-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-header {
+  height: 60px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.12);
+  z-index: 10;
+}
+
+.lightbox-title {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+}
+
+.lightbox-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lightbox-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.lightbox-btn:hover {
+  background: var(--watercolor-60);
+  border-color: var(--watercolor-blue);
+  transform: scale(1.08);
+}
+
+.lightbox-btn svg {
+  width: 18px;
+  height: 18px;
+  stroke: #ffffff;
+  stroke-width: 2.2;
+  fill: none;
+}
+
+.lightbox-zoom-display {
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  min-width: 50px;
+  text-align: center;
+}
+
+.lightbox-close-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #ffffff;
+}
+
+.lightbox-close-btn:hover {
+  background: #ff5252;
+  border-color: #ff5252;
+}
+
+.lightbox-viewport {
+  flex: 1;
+  width: 100%;
+  height: calc(100% - 60px);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+}
+
+.lightbox-viewport.is-dragging {
+  cursor: grabbing;
+}
+
+.lightbox-img-wrapper {
+  position: absolute;
+  transform-origin: center center;
+  transition: transform 0.1s ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-img {
+  max-width: 88vw;
+  max-height: 85vh;
+  object-fit: contain;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(114, 169, 232, 0.5);
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   MODELS MODAL INSPECTION
+   ========================================================================== */
+.models-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(28, 28, 28, 0.7);
+  backdrop-filter: blur(6px);
+  z-index: 1500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.35s ease;
+}
+
+.models-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.models-modal-card {
+  position: relative;
+  width: min(840px, 92vw);
+  max-height: 90vh;
+  background: #ffffff;
+  border: 3px solid var(--ink-border);
+  border-radius: var(--sketch-border-radius);
+  padding: 24px;
+  box-shadow: 6px 8px 0 var(--ink-border), 12px 14px 0 var(--watercolor-60);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.models-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--ink-border);
+}
+
+.models-modal-title {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.models-modal-img-container {
+  width: 100%;
+  max-height: 60vh;
+  background: #f7f4ed;
+  border: 1.5px solid var(--ink-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: zoom-in;
+}
+
+.models-modal-img {
+  max-width: 100%;
+  max-height: 60vh;
+  object-fit: contain;
+}
+
+/* ==========================================================================
+   MEDIA QUERIES (RESPONSIVENESS)
+   ========================================================================== */
+@media (max-width: 900px) {
+  .top-nav {
+    padding: 0 16px;
+  }
+  .nav-right-controls {
+    margin-right: 180px;
+  }
+  .profile-box-container.state-docked {
+    width: 160px;
+  }
+  .profile-box-container.state-docked .profile-info {
+    display: none;
+  }
+  .sketchbook-content-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    height: auto;
+    overflow-y: auto;
+  }
+  .gallery-nav-arrow.arrow-prev {
+    left: 10px;
+  }
+  .gallery-nav-arrow.arrow-next {
+    right: 10px;
+  }
+}
+
+
+/* ==========================================================================
+   SKETCH THEME & WATERCOLOR ANIMATIONS
+   Highlight Color: #72a9e8 with 60% opacity
+   ========================================================================== */
+
+/* Keyframe Animations */
+@keyframes watercolorPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+}
+
+.crate-aura {
+  animation: watercolorPulse 3s infinite ease-in-out;
+}
+
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.crate-cta {
+  animation: floatGentle 2.5s infinite ease-in-out;
+}
+
+/* Wobbly sketch button border on hover */
+@keyframes sketchWobble {
+  0% { border-radius: 255px 15px 225px 15px/15px 225px 15px 255px; }
+  33% { border-radius: 15px 225px 15px 255px/255px 15px 225px 15px; }
+  66% { border-radius: 225px 15px 255px 15px/15px 255px 15px 225px; }
+  100% { border-radius: 255px 15px 225px 15px/15px 225px 15px 255px; }
+}
+
+.nav-btn:hover, .profile-card:hover {
+  animation: sketchWobble 1.2s infinite ease-in-out;
+}
+
+/* Pen sound toggle effect */
+.sound-active svg {
+  stroke: var(--watercolor-blue);
+}
+
+/* Subtle architectural pencil guidelines */
+.guide-line {
+  stroke: #72a9e8;
+  stroke-width: 0.6;
+  stroke-dasharray: 4,4;
+  opacity: 0.4;
+}
+
+/* Ink bleed text shadow */
+.ink-text {
+  text-shadow: 0.5px 0.5px 0px rgba(28, 28, 28, 0.4);
+}
+
+  </style>
 </head>
 <body>
 
@@ -1379,9 +2798,1199 @@
 
 </div>
 
-<!-- Data Catalog & Main Script -->
-<script src="portfolio_data.js"></script>
-<script src="js/app.js"></script>
+<!-- Data Catalog & Main Script: Embedded directly so they never fail -->
+<script>
+window.PORTFOLIO_DATA = {
+  "author": {
+    "name": "Pham Phuong Nghi",
+    "grade": "12 Physics",
+    "school": "High School for the Gifted"
+  },
+  "past": {
+    "title": "What I did",
+    "rooms": [
+      {
+        "id": "digital-paintings",
+        "name": "Digital paintings",
+        "folder": "Digital paintings",
+        "type": "gallery",
+        "items": [
+          {
+            "title": "Church of Light",
+            "file": "Church of Light_final.png",
+            "path": "assets/artworks/Past/Digital paintings/Church of Light_final.png",
+            "width": 4096,
+            "height": 3268,
+            "aspectRatio": 1.253
+          },
+          {
+            "title": "Emotion of Red",
+            "file": "Emotion of Red.png",
+            "path": "assets/artworks/Past/Digital paintings/Emotion of Red.png",
+            "width": 1920,
+            "height": 2560,
+            "aspectRatio": 0.75
+          },
+          {
+            "title": "House in iceland",
+            "file": "House in iceland.png",
+            "path": "assets/artworks/Past/Digital paintings/House in iceland.png",
+            "width": 1920,
+            "height": 1080,
+            "aspectRatio": 1.778
+          },
+          {
+            "title": "Metro",
+            "file": "Metro.png",
+            "path": "assets/artworks/Past/Digital paintings/Metro.png",
+            "width": 2100,
+            "height": 2100,
+            "aspectRatio": 1.0
+          }
+        ]
+      },
+      {
+        "id": "models",
+        "name": "Models",
+        "folder": "Models",
+        "type": "models",
+        "subfolders": [
+          {
+            "id": "bus-stop-totoro",
+            "name": "Bus Stop Totoro",
+            "folder": "Bus Stop Totoro",
+            "items": [
+              {
+                "title": "BUS STOP TOTORO",
+                "file": "BUS STOP TOTORO.png",
+                "path": "assets/artworks/Past/Models/Bus Stop Totoro/BUS STOP TOTORO.png",
+                "width": 2000,
+                "height": 1414,
+                "aspectRatio": 1.414
+              }
+            ]
+          },
+          {
+            "id": "the-city-industrialism",
+            "name": "The City's Industrialism",
+            "folder": "The City_s Industrialism",
+            "items": [
+              {
+                "title": "A BRIEF OF SAI GON S INDUSTRIALISM",
+                "file": "A BRIEF OF SAI GON_S INDUSTRIALISM.png",
+                "path": "assets/artworks/Past/Models/The City_s Industrialism/A BRIEF OF SAI GON_S INDUSTRIALISM.png",
+                "width": 2000,
+                "height": 1414,
+                "aspectRatio": 1.414
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "pencil",
+        "name": "Pencil",
+        "folder": "Pencil",
+        "type": "gallery",
+        "items": [
+          {
+            "title": "Mouth",
+            "file": "1789107892495_116549098738258982_7766005626714498686_388419d86ddf2c5e76dc24848a53a5a8.jpg",
+            "path": "assets/artworks/Past/Pencil/1789107892495_116549098738258982_7766005626714498686_388419d86ddf2c5e76dc24848a53a5a8.jpg",
+            "width": 2560,
+            "height": 1906,
+            "aspectRatio": 1.343
+          },
+          {
+            "title": "Ear",
+            "file": "Ear.jpg",
+            "path": "assets/artworks/Past/Pencil/Ear.jpg",
+            "width": 2560,
+            "height": 1822,
+            "aspectRatio": 1.405
+          },
+          {
+            "title": "Head 1",
+            "file": "Head 1.jpg",
+            "path": "assets/artworks/Past/Pencil/Head 1.jpg",
+            "width": 1920,
+            "height": 2560,
+            "aspectRatio": 0.75
+          },
+          {
+            "title": "Head 2",
+            "file": "Head 2.jpg",
+            "path": "assets/artworks/Past/Pencil/Head 2.jpg",
+            "width": 4000,
+            "height": 3000,
+            "aspectRatio": 1.333
+          },
+          {
+            "title": "Nose",
+            "file": "Nose.jpg",
+            "path": "assets/artworks/Past/Pencil/Nose.jpg",
+            "width": 2560,
+            "height": 1889,
+            "aspectRatio": 1.355
+          },
+          {
+            "title": "Statue",
+            "file": "Statue.jpg",
+            "path": "assets/artworks/Past/Pencil/Statue.jpg",
+            "width": 1874,
+            "height": 2560,
+            "aspectRatio": 0.732
+          }
+        ]
+      },
+      {
+        "id": "sketches",
+        "name": "Sketches",
+        "folder": "Sketches",
+        "type": "gallery",
+        "items": [
+          {
+            "title": "One Pillar Pagoda",
+            "file": "One Pillar Pagoda.png",
+            "path": "assets/artworks/Past/Sketches/One Pillar Pagoda.png",
+            "width": 1190,
+            "height": 1684,
+            "aspectRatio": 0.707
+          },
+          {
+            "title": "The Cologne Cathedral",
+            "file": "The Cologne Cathedral.png",
+            "path": "assets/artworks/Past/Sketches/The Cologne Cathedral.png",
+            "width": 1190,
+            "height": 1684,
+            "aspectRatio": 0.707
+          },
+          {
+            "title": "The Jewism Museum in Berlin",
+            "file": "The Jewism Museum in Berlin.png",
+            "path": "assets/artworks/Past/Sketches/The Jewism Museum in Berlin.png",
+            "width": 1684,
+            "height": 1190,
+            "aspectRatio": 1.415
+          }
+        ]
+      },
+      {
+        "id": "vietnamese-lacquered-painting",
+        "name": "Vietnamese Lacquered Painting (Son Mai)",
+        "folder": "Vietnamese Lacquered Painting (Son Mai)",
+        "type": "gallery",
+        "items": [
+          {
+            "title": "Capybara in Giao Linh",
+            "file": "Capybara in Giao Linh.jpg",
+            "path": "assets/artworks/Past/Vietnamese Lacquered Painting (Son Mai)/Capybara in Giao Linh.jpg",
+            "width": 1940,
+            "height": 1945,
+            "aspectRatio": 0.997
+          },
+          {
+            "title": "Carp turning into a Capy",
+            "file": "Carp turning into a Capy.jpg",
+            "path": "assets/artworks/Past/Vietnamese Lacquered Painting (Son Mai)/Carp turning into a Capy.jpg",
+            "width": 1978,
+            "height": 1965,
+            "aspectRatio": 1.007
+          }
+        ]
+      },
+      {
+        "id": "others",
+        "name": "Others",
+        "folder": "Others",
+        "type": "gallery",
+        "items": [
+          {
+            "title": "The Emotion in Still Life",
+            "file": "The Emotion in Still Life.jpg",
+            "path": "assets/artworks/Past/Others/The Emotion in Still Life.jpg",
+            "width": 4000,
+            "height": 3000,
+            "aspectRatio": 1.333
+          }
+        ]
+      }
+    ]
+  },
+  "present": {
+    "title": "What I'm doing",
+    "brief": "This project transforms everyday stationery into a functional board game, where pen caps become chess pieces, erasers become dice, and notebooks become game boards, featuring illustrations inspired by Thần Đồng Đất Việt. By bringing childhood memories back into our daily routines, the project explores how familiar objects can keep the past within sight, allowing forgotten memories to be rediscovered through the things we use every day.",
+    "items": [
+      {
+        "title": "Ludo King board Design",
+        "file": "Ludo King board Design.png",
+        "path": "assets/artworks/Present/Ludo King board Design.png",
+        "width": 3300,
+        "height": 2550,
+        "aspectRatio": 1.294
+      },
+      {
+        "title": "Models  sketches 1",
+        "file": "Models_ sketches_1.png",
+        "path": "assets/artworks/Present/Models_ sketches_1.png",
+        "width": 3300,
+        "height": 2550,
+        "aspectRatio": 1.294
+      },
+      {
+        "title": "Pattern 1",
+        "file": "Pattern_1.png",
+        "path": "assets/artworks/Present/Pattern_1.png",
+        "width": 3300,
+        "height": 2550,
+        "aspectRatio": 1.294
+      },
+      {
+        "title": "Project Idea Concept",
+        "file": "Project_Idea Concept.jpg",
+        "path": "assets/artworks/Present/Project_Idea Concept.jpg",
+        "width": 2880,
+        "height": 1800,
+        "aspectRatio": 1.6
+      }
+    ]
+  },
+  "future": {
+    "title": "What I plan to do",
+    "humaneChaos": [
+      {
+        "title": "The Humane Chaos",
+        "file": "The Humane Chaos.jpg",
+        "path": "assets/artworks/Future/The Humane Chaos/The Humane Chaos.jpg",
+        "width": 2100,
+        "height": 2100,
+        "aspectRatio": 1.0
+      }
+    ],
+    "innerOrbits": [
+      {
+        "title": "The Sun",
+        "file": "The Sun.jpg",
+        "path": "assets/artworks/Future/The Inner Orbits/The Sun.jpg",
+        "width": 697,
+        "height": 981,
+        "aspectRatio": 0.71
+      },
+      {
+        "title": "The Mercury",
+        "file": "The Mercury.jpg",
+        "path": "assets/artworks/Future/The Inner Orbits/The Mercury.jpg",
+        "width": 649,
+        "height": 903,
+        "aspectRatio": 0.719
+      },
+      {
+        "title": "The Venus",
+        "file": "The Venus.jpg",
+        "path": "assets/artworks/Future/The Inner Orbits/The Venus.jpg",
+        "width": 905,
+        "height": 1259,
+        "aspectRatio": 0.719
+      },
+      {
+        "title": "The Moon",
+        "file": "The Moon.jpg",
+        "path": "assets/artworks/Future/The Inner Orbits/The Moon.jpg",
+        "width": 648,
+        "height": 908,
+        "aspectRatio": 0.714
+      },
+      {
+        "title": "The Mars",
+        "file": "The Mars.jpg",
+        "path": "assets/artworks/Future/The Inner Orbits/The Mars.jpg",
+        "width": 638,
+        "height": 888,
+        "aspectRatio": 0.718
+      },
+      {
+        "title": "The Jupiter",
+        "file": "The Jupiter.jpg",
+        "path": "assets/artworks/Future/The Inner Orbits/The Jupiter.jpg",
+        "width": 642,
+        "height": 885,
+        "aspectRatio": 0.725
+      },
+      {
+        "title": "The Saturn",
+        "file": "The Saturn.jpg",
+        "path": "assets/artworks/Future/The Inner Orbits/The Saturn.jpg",
+        "width": 634,
+        "height": 895,
+        "aspectRatio": 0.708
+      },
+      {
+        "title": "The Uranus",
+        "file": "The Uranus.jpg",
+        "path": "assets/artworks/Future/The Inner Orbits/The Uranus.jpg",
+        "width": 626,
+        "height": 890,
+        "aspectRatio": 0.703
+      },
+      {
+        "title": "The Neptune",
+        "file": "The Neptune.jpg",
+        "path": "assets/artworks/Future/The Inner Orbits/The Neptune.jpg",
+        "width": 923,
+        "height": 1325,
+        "aspectRatio": 0.697
+      }
+    ]
+  }
+};
+
+</script>
+
+<script>
+/**
+ * ARCHITECTURAL SKETCH PORTFOLIO APPLICATION
+ * Artist: Pham Phuong Nghi
+ * Style: Architectural Ink Sketch & Watercolor Highlight (#72a9e8, 60% opacity)
+ */
+
+(function () {
+  'use strict';
+
+  // State Management
+  const state = {
+    history: ['home'], // Navigation history stack
+    currentView: 'home',
+    activePastRoom: null,
+    pastGalleryIndex: 0,
+    presentGalleryIndex: 0,
+    lightbox: {
+      active: false,
+      title: '',
+      src: '',
+      zoom: 1,
+      panX: 0,
+      panY: 0,
+      isDragging: false,
+      dragStartX: 0,
+      dragStartY: 0
+    },
+    soundEnabled: true,
+    profileDocked: false
+  };
+
+  // Robust Image Resolver: Works both in standard "assets/..." hierarchy AND when flattened into root!
+  function setSafeImage(imgEl, itemOrPath, fallbackFile) {
+    if (!imgEl) return;
+    let path = typeof itemOrPath === 'string' ? itemOrPath : (itemOrPath ? itemOrPath.path : '');
+    let file = fallbackFile || (itemOrPath && typeof itemOrPath === 'object' && itemOrPath.file ? itemOrPath.file : (path ? path.split('/').pop() : ''));
+
+    imgEl.dataset.fallbackTried = 'false';
+    imgEl.dataset.rootFile = file || '';
+
+    imgEl.onerror = function () {
+      if (this.dataset.fallbackTried !== 'true' && this.dataset.rootFile) {
+        this.dataset.fallbackTried = 'true';
+        this.src = encodeURI(this.dataset.rootFile);
+      }
+    };
+
+    imgEl.src = encodeURI(path);
+  }
+
+
+  // DOM Elements
+  const els = {
+    app: document.getElementById('app'),
+    btnBack: document.getElementById('btn-back'),
+    btnHome: document.getElementById('btn-home'),
+    btnSound: document.getElementById('btn-sound'),
+    breadcrumb: document.getElementById('nav-breadcrumb'),
+    profileBox: document.getElementById('profile-box'),
+    profileClose: document.getElementById('profile-close'),
+    transitionCurtain: document.getElementById('transition-curtain'),
+
+    // Views
+    viewHome: document.getElementById('view-home'),
+    viewPastRotunda: document.getElementById('view-past-rotunda'),
+    viewPastGallery: document.getElementById('view-past-gallery'),
+    viewPastModels: document.getElementById('view-past-models'),
+    viewPresentStudio: document.getElementById('view-present-studio'),
+    viewFutureSketchbook: document.getElementById('view-future-sketchbook'),
+
+    // Gallery Elements
+    galleryFrame: document.getElementById('gallery-artwork-frame'),
+    galleryImg: document.getElementById('gallery-artwork-img'),
+    galleryTitle: document.getElementById('gallery-title'),
+    galleryCounter: document.getElementById('gallery-counter'),
+    galleryPrevBtn: document.getElementById('gallery-prev-btn'),
+    galleryNextBtn: document.getElementById('gallery-next-btn'),
+
+    // Present Showcase Elements
+    presentShowcase: document.getElementById('present-showcase'),
+    presentCloseBtn: document.getElementById('present-close-btn'),
+    presentImg: document.getElementById('present-img'),
+    presentTitle: document.getElementById('present-title'),
+    presentCounter: document.getElementById('present-counter'),
+    presentPrevBtn: document.getElementById('present-prev-btn'),
+    presentNextBtn: document.getElementById('present-next-btn'),
+
+    // Models Modal Elements
+    modelsModal: document.getElementById('models-modal'),
+    modelsModalTitle: document.getElementById('models-modal-title'),
+    modelsModalImg: document.getElementById('models-modal-img'),
+    modelsModalClose: document.getElementById('models-modal-close'),
+
+    // Lightbox Elements
+    lightboxModal: document.getElementById('lightbox-modal'),
+    lightboxImg: document.getElementById('lightbox-img'),
+    lightboxImgWrapper: document.getElementById('lightbox-img-wrapper'),
+    lightboxTitle: document.getElementById('lightbox-title'),
+    lightboxZoomDisplay: document.getElementById('lightbox-zoom-display'),
+    lightboxZoomIn: document.getElementById('lightbox-zoom-in'),
+    lightboxZoomOut: document.getElementById('lightbox-zoom-out'),
+    lightboxZoomReset: document.getElementById('lightbox-zoom-reset'),
+    lightboxClose: document.getElementById('lightbox-close'),
+    lightboxViewport: document.getElementById('lightbox-viewport')
+  };
+
+  // Web Audio Synthesizer (Pencil sketch & paper turn sounds)
+  const soundSynth = {
+    ctx: null,
+    init() {
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (AudioCtx) this.ctx = new AudioCtx();
+      } catch (e) {
+        console.warn('AudioContext not available', e);
+      }
+    },
+    playSketch() {
+      if (!state.soundEnabled || !this.ctx) return;
+      if (this.ctx.state === 'suspended') this.ctx.resume();
+      
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(320, this.ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(140, this.ctx.currentTime + 0.08);
+
+      gain.gain.setValueAtTime(0.04, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.08);
+
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      osc.start();
+      osc.stop(this.ctx.currentTime + 0.08);
+    },
+    playPaperTurn() {
+      if (!state.soundEnabled || !this.ctx) return;
+      if (this.ctx.state === 'suspended') this.ctx.resume();
+
+      // Filtered white noise for paper rustle
+      const bufferSize = this.ctx.sampleRate * 0.12;
+      const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        data[i] = (Math.random() * 2 - 1) * 0.5;
+      }
+
+      const noise = this.ctx.createBufferSource();
+      noise.buffer = buffer;
+
+      const filter = this.ctx.createBiquadFilter();
+      filter.type = 'bandpass';
+      filter.frequency.setValueAtTime(1200, this.ctx.currentTime);
+      filter.Q.setValueAtTime(2.5, this.ctx.currentTime);
+
+      const gain = this.ctx.createGain();
+      gain.gain.setValueAtTime(0.06, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.12);
+
+      noise.connect(filter);
+      filter.connect(gain);
+      gain.connect(this.ctx.destination);
+
+      noise.start();
+    }
+  };
+
+  // Initialize Portfolio App
+  function initApp() {
+    soundSynth.init();
+    setupProfileBox();
+    setupNavigation();
+    setupPastRotunda();
+    setupGalleryControls();
+    setupModelsPedestals();
+    setupPresentStudio();
+    setupFutureSketchbook();
+    setupLightbox();
+    renderView('home', false);
+  }
+
+  // =========================================================================
+  // PROFILE BOX LOGIC
+  // Starts centered -> Docks to top-right corner after 5 seconds
+  // =========================================================================
+  function setupProfileBox() {
+    let timer = setTimeout(() => {
+      dockProfileBox();
+    }, 5000);
+
+    // Clicking profile card toggles state
+    els.profileBox.addEventListener('click', (e) => {
+      soundSynth.playSketch();
+      if (state.profileDocked) {
+        expandProfileBox();
+      } else {
+        clearTimeout(timer);
+        dockProfileBox();
+      }
+    });
+
+    if (els.profileClose) {
+      els.profileClose.addEventListener('click', (e) => {
+        e.stopPropagation();
+        clearTimeout(timer);
+        dockProfileBox();
+      });
+    }
+  }
+
+  function dockProfileBox() {
+    state.profileDocked = true;
+    els.profileBox.classList.remove('state-modal');
+    els.profileBox.classList.add('state-docked');
+  }
+
+  function expandProfileBox() {
+    state.profileDocked = false;
+    els.profileBox.classList.remove('state-docked');
+    els.profileBox.classList.add('state-modal');
+  }
+
+  // =========================================================================
+  // VIEW NAVIGATION & TRANSITION LOGIC
+  // "Mỗi bước chuyển giao diện đều cần có hoạt ảnh (fade/zoom hoặc morph)"
+  // =========================================================================
+  function navigateTo(targetView, addToHistory = true) {
+    if (targetView === state.currentView) return;
+    soundSynth.playPaperTurn();
+
+    if (addToHistory) {
+      state.history.push(targetView);
+    }
+
+    // Play watercolor transition curtain
+    els.transitionCurtain.classList.add('active');
+
+    setTimeout(() => {
+      renderView(targetView);
+      setTimeout(() => {
+        els.transitionCurtain.classList.remove('active');
+      }, 150);
+    }, 250);
+  }
+
+  function navigateBack() {
+    if (state.history.length <= 1) return;
+    soundSynth.playPaperTurn();
+
+    state.history.pop();
+    const previousView = state.history[state.history.length - 1];
+
+    els.transitionCurtain.classList.add('active');
+    setTimeout(() => {
+      renderView(previousView);
+      setTimeout(() => {
+        els.transitionCurtain.classList.remove('active');
+      }, 150);
+    }, 250);
+  }
+
+  function navigateHome() {
+    if (state.currentView === 'home') return;
+    soundSynth.playPaperTurn();
+
+    state.history = ['home'];
+    els.transitionCurtain.classList.add('active');
+    setTimeout(() => {
+      renderView('home');
+      setTimeout(() => {
+        els.transitionCurtain.classList.remove('active');
+      }, 150);
+    }, 250);
+  }
+
+  function setupNavigation() {
+    // Back & Home buttons
+    els.btnBack.addEventListener('click', navigateBack);
+    els.btnHome.addEventListener('click', navigateHome);
+
+    // Sound toggle button
+    els.btnSound.addEventListener('click', () => {
+      state.soundEnabled = !state.soundEnabled;
+      els.btnSound.classList.toggle('sound-active', state.soundEnabled);
+      if (state.soundEnabled) soundSynth.playSketch();
+    });
+
+    // Keyboard navigation
+    window.addEventListener('keydown', (e) => {
+      if (state.lightbox.active) {
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === '+' || e.key === '=') zoomLightbox(0.25);
+        if (e.key === '-') zoomLightbox(-0.25);
+        if (e.key === '0') resetLightboxZoom();
+        return;
+      }
+
+      if (e.key === 'Escape') {
+        if (els.presentShowcase && els.presentShowcase.classList.contains('active')) {
+          closePresentShowcase();
+          return;
+        }
+        if (els.modelsModal && els.modelsModal.classList.contains('active')) {
+          closeModelsModal();
+          return;
+        }
+        navigateBack();
+      }
+
+      // Left/Right arrow cycling
+      if (state.currentView.startsWith('gallery:')) {
+        if (e.key === 'ArrowRight') nextGalleryArtwork();
+        if (e.key === 'ArrowLeft') prevGalleryArtwork();
+      } else if (els.presentShowcase && els.presentShowcase.classList.contains('active')) {
+        if (e.key === 'ArrowRight') nextPresentArtwork();
+        if (e.key === 'ArrowLeft') prevPresentArtwork();
+      }
+    });
+
+    // Setup Home Museum SVG Hotspots
+    setupHomeHotspots();
+  }
+
+  function setupHomeHotspots() {
+    const attachHotspot = () => {
+      const homeSvg = els.viewHome.querySelector('svg');
+      if (!homeSvg) return;
+
+      const hotspotPast = homeSvg.querySelector('#hotspot-past');
+      const hotspotPresent = homeSvg.querySelector('#hotspot-present');
+      const hotspotFuture = homeSvg.querySelector('#hotspot-future');
+
+      if (hotspotPast) {
+        hotspotPast.addEventListener('click', () => navigateTo('past'));
+      }
+      if (hotspotPresent) {
+        hotspotPresent.addEventListener('click', () => navigateTo('present'));
+      }
+      if (hotspotFuture) {
+        hotspotFuture.addEventListener('click', () => navigateTo('future'));
+      }
+    };
+
+    // Run now and also after SVG load
+    attachHotspot();
+    const obj = els.viewHome.querySelector('object');
+    if (obj) {
+      obj.addEventListener('load', () => {
+        try {
+          const doc = obj.contentDocument;
+          const p = doc.querySelector('#hotspot-past');
+          const pr = doc.querySelector('#hotspot-present');
+          const f = doc.querySelector('#hotspot-future');
+          if (p) p.addEventListener('click', () => navigateTo('past'));
+          if (pr) pr.addEventListener('click', () => navigateTo('present'));
+          if (f) f.addEventListener('click', () => navigateTo('future'));
+        } catch (e) {
+          console.warn('Cannot attach inside object:', e);
+        }
+      });
+    }
+  }
+
+  function renderView(viewTarget) {
+    state.currentView = viewTarget;
+
+    // Deactivate all views
+    document.querySelectorAll('.view-section').forEach(sec => {
+      sec.classList.remove('view-active');
+    });
+
+    // Update Back button state
+    els.btnBack.classList.toggle('btn-disabled', state.history.length <= 1);
+
+    // Update Breadcrumbs & Activate View
+    if (viewTarget === 'home') {
+      els.viewHome.classList.add('view-active');
+      updateBreadcrumb(['Home']);
+    } 
+    else if (viewTarget === 'past') {
+      els.viewPastRotunda.classList.add('view-active');
+      updateBreadcrumb(['Home', 'Past']);
+    } 
+    else if (viewTarget.startsWith('gallery:')) {
+      const roomId = viewTarget.split(':')[1];
+      showPastGallery(roomId);
+      els.viewPastGallery.classList.add('view-active');
+      const room = getRoomData(roomId);
+      updateBreadcrumb(['Home', 'Past', room ? room.name : 'Gallery']);
+    } 
+    else if (viewTarget === 'models') {
+      els.viewPastModels.classList.add('view-active');
+      updateBreadcrumb(['Home', 'Past', 'Models']);
+    } 
+    else if (viewTarget === 'present') {
+      els.viewPresentStudio.classList.add('view-active');
+      updateBreadcrumb(['Home', 'Present']);
+    } 
+    else if (viewTarget === 'future') {
+      els.viewFutureSketchbook.classList.add('view-active');
+      updateBreadcrumb(['Home', 'Future']);
+    }
+  }
+
+  function updateBreadcrumb(items) {
+    els.breadcrumb.innerHTML = items.map((item, i) => {
+      const isLast = i === items.length - 1;
+      return `<span class="${isLast ? 'breadcrumb-active' : ''}">${item}</span>` + 
+             (!isLast ? '<span class="breadcrumb-separator">/</span>' : '');
+    }).join(' ');
+  }
+
+  function getRoomData(roomId) {
+    if (!window.PORTFOLIO_DATA || !window.PORTFOLIO_DATA.past) return null;
+    return window.PORTFOLIO_DATA.past.rooms.find(r => r.id === roomId);
+  }
+
+  // =========================================================================
+  // VIEW: PAST ROTUNDA (FLOOR PLAN)
+  // =========================================================================
+  function setupPastRotunda() {
+    const bindRooms = () => {
+      const svg = els.viewPastRotunda.querySelector('svg');
+      if (!svg) return;
+
+      const roomGroups = svg.querySelectorAll('.floorplan-room-group');
+      roomGroups.forEach(grp => {
+        grp.addEventListener('click', () => {
+          soundSynth.playSketch();
+          const roomId = grp.getAttribute('data-room-id');
+          if (roomId === 'models') {
+            navigateTo('models');
+          } else {
+            navigateTo(`gallery:${roomId}`);
+          }
+        });
+      });
+    };
+
+    bindRooms();
+    const obj = els.viewPastRotunda.querySelector('object');
+    if (obj) {
+      obj.addEventListener('load', () => {
+        try {
+          const doc = obj.contentDocument;
+          const roomGroups = doc.querySelectorAll('.floorplan-room-group');
+          roomGroups.forEach(grp => {
+            grp.addEventListener('click', () => {
+              soundSynth.playSketch();
+              const roomId = grp.getAttribute('data-room-id');
+              if (roomId === 'models') {
+                navigateTo('models');
+              } else {
+                navigateTo(`gallery:${roomId}`);
+              }
+            });
+          });
+        } catch (e) {
+          console.warn('Object bind error', e);
+        }
+      });
+    }
+  }
+
+  // =========================================================================
+  // VIEW: PAST GALLERY (STANDARD PICTURE FRAME WITH ASPECT RATIO & ARROWS)
+  // =========================================================================
+  function showPastGallery(roomId) {
+    state.activePastRoom = getRoomData(roomId);
+    state.pastGalleryIndex = 0;
+    renderPastGalleryArtwork();
+  }
+
+  function renderPastGalleryArtwork(animationDirection = null) {
+    if (!state.activePastRoom || !state.activePastRoom.items.length) return;
+
+    const items = state.activePastRoom.items;
+    const currentItem = items[state.pastGalleryIndex];
+
+    // Trigger frame morph / 3D flip animation
+    if (animationDirection === 'next') {
+      els.galleryFrame.classList.remove('flip-next', 'flip-prev');
+      void els.galleryFrame.offsetWidth; // Force reflow
+      els.galleryFrame.classList.add('flip-next');
+    } else if (animationDirection === 'prev') {
+      els.galleryFrame.classList.remove('flip-next', 'flip-prev');
+      void els.galleryFrame.offsetWidth;
+      els.galleryFrame.classList.add('flip-prev');
+    }
+
+    // Set Image src and metadata
+    setSafeImage(els.galleryImg, currentItem);
+    els.galleryImg.alt = currentItem.title;
+    els.galleryTitle.textContent = currentItem.title;
+    els.galleryCounter.textContent = `${state.pastGalleryIndex + 1} / ${items.length}`;
+
+    // Adjust Frame Aspect Ratio Dynamically!
+    if (currentItem.aspectRatio) {
+      const maxW = Math.min(window.innerWidth * 0.82, 840);
+      const maxH = Math.min(window.innerHeight * 0.65, 540);
+      let targetW = maxH * currentItem.aspectRatio;
+      let targetH = maxH;
+      if (targetW > maxW) {
+        targetW = maxW;
+        targetH = maxW / currentItem.aspectRatio;
+      }
+      els.galleryFrame.style.width = `${Math.round(targetW)}px`;
+    }
+
+    // Arrow visibility rule:
+    // "Trong trường hợp folder chỉ có một ảnh như folder Others thì không cần có mũi tên"
+    if (items.length <= 1) {
+      els.galleryPrevBtn.style.display = 'none';
+      els.galleryNextBtn.style.display = 'none';
+    } else {
+      els.galleryPrevBtn.style.display = 'flex';
+      els.galleryNextBtn.style.display = 'flex';
+    }
+  }
+
+  function nextGalleryArtwork() {
+    if (!state.activePastRoom || state.activePastRoom.items.length <= 1) return;
+    soundSynth.playSketch();
+    state.pastGalleryIndex = (state.pastGalleryIndex + 1) % state.activePastRoom.items.length;
+    renderPastGalleryArtwork('next');
+  }
+
+  function prevGalleryArtwork() {
+    if (!state.activePastRoom || state.activePastRoom.items.length <= 1) return;
+    soundSynth.playSketch();
+    state.pastGalleryIndex = (state.pastGalleryIndex - 1 + state.activePastRoom.items.length) % state.activePastRoom.items.length;
+    renderPastGalleryArtwork('prev');
+  }
+
+  function setupGalleryControls() {
+    els.galleryNextBtn.addEventListener('click', nextGalleryArtwork);
+    els.galleryPrevBtn.addEventListener('click', prevGalleryArtwork);
+
+    // Clicking image opens Lightbox Zoom
+    els.galleryImg.addEventListener('click', () => {
+      if (!state.activePastRoom) return;
+      const cur = state.activePastRoom.items[state.pastGalleryIndex];
+      openLightbox(cur.title, cur);
+    });
+  }
+
+  // =========================================================================
+  // VIEW: PAST MODELS (2 PEDESTALS WITH VITRINES & SHOWCASE MODAL)
+  // =========================================================================
+  function setupModelsPedestals() {
+    const bindPedestals = () => {
+      const svg = els.viewPastModels.querySelector('svg');
+      if (!svg) return;
+
+      const pTotoro = svg.querySelector('#pedestal-totoro');
+      const pIndustrial = svg.querySelector('#pedestal-industrialism');
+
+      if (pTotoro) {
+        pTotoro.addEventListener('click', () => openModelModal('bus-stop-totoro'));
+      }
+      if (pIndustrial) {
+        pIndustrial.addEventListener('click', () => openModelModal('the-city-industrialism'));
+      }
+    };
+
+    bindPedestals();
+    const obj = els.viewPastModels.querySelector('object');
+    if (obj) {
+      obj.addEventListener('load', () => {
+        try {
+          const doc = obj.contentDocument;
+          const pT = doc.querySelector('#pedestal-totoro');
+          const pI = doc.querySelector('#pedestal-industrialism');
+          if (pT) pT.addEventListener('click', () => openModelModal('bus-stop-totoro'));
+          if (pI) pI.addEventListener('click', () => openModelModal('the-city-industrialism'));
+        } catch (e) {
+          console.warn('Pedestal bind error', e);
+        }
+      });
+    }
+
+    els.modelsModalClose.addEventListener('click', closeModelsModal);
+    els.modelsModal.addEventListener('click', (e) => {
+      if (e.target === els.modelsModal) closeModelsModal();
+    });
+
+    els.modelsModalImg.addEventListener('click', () => {
+      const title = els.modelsModalTitle.textContent;
+      const src = els.modelsModalImg.src;
+      openLightbox(title, src);
+    });
+  }
+
+  function openModelModal(subfolderId) {
+    soundSynth.playPaperTurn();
+    const modelsRoom = getRoomData('models');
+    if (!modelsRoom) return;
+
+    const sub = modelsRoom.subfolders.find(s => s.id === subfolderId);
+    if (!sub || !sub.items.length) return;
+
+    const item = sub.items[0];
+    els.modelsModalTitle.textContent = sub.name;
+    setSafeImage(els.modelsModalImg, item);
+    els.modelsModalImg.alt = item.title;
+
+    els.modelsModal.classList.add('active');
+  }
+
+  function closeModelsModal() {
+    soundSynth.playSketch();
+    els.modelsModal.classList.remove('active');
+  }
+
+  // =========================================================================
+  // VIEW: PRESENT (CONSTRUCTION STUDIO & PROJECT SHOWCASE)
+  // =========================================================================
+  function setupPresentStudio() {
+    const bindCrates = () => {
+      const svg = els.viewPresentStudio.querySelector('svg');
+      if (!svg) return;
+
+      const boxes = svg.querySelector('#construction-boxes');
+      if (boxes) {
+        boxes.addEventListener('click', openPresentShowcase);
+      }
+    };
+
+    bindCrates();
+    const obj = els.viewPresentStudio.querySelector('object');
+    if (obj) {
+      obj.addEventListener('load', () => {
+        try {
+          const doc = obj.contentDocument;
+          const b = doc.querySelector('#construction-boxes');
+          if (b) b.addEventListener('click', openPresentShowcase);
+        } catch (e) {
+          console.warn('Crates bind error', e);
+        }
+      });
+    }
+
+    els.presentCloseBtn.addEventListener('click', closePresentShowcase);
+    els.presentNextBtn.addEventListener('click', nextPresentArtwork);
+    els.presentPrevBtn.addEventListener('click', prevPresentArtwork);
+
+    els.presentImg.addEventListener('click', () => {
+      const items = window.PORTFOLIO_DATA.present.items;
+      const cur = items[state.presentGalleryIndex];
+      openLightbox(cur.title, cur);
+    });
+  }
+
+  function openPresentShowcase() {
+    soundSynth.playPaperTurn();
+    state.presentGalleryIndex = 0;
+    renderPresentArtwork();
+    els.presentShowcase.classList.add('active');
+  }
+
+  function closePresentShowcase() {
+    soundSynth.playSketch();
+    els.presentShowcase.classList.remove('active');
+  }
+
+  function renderPresentArtwork() {
+    const items = window.PORTFOLIO_DATA.present.items;
+    if (!items || !items.length) return;
+
+    const cur = items[state.presentGalleryIndex];
+    setSafeImage(els.presentImg, cur);
+    els.presentImg.alt = cur.title;
+    els.presentTitle.textContent = cur.title;
+    els.presentCounter.textContent = `${state.presentGalleryIndex + 1} / ${items.length}`;
+  }
+
+  function nextPresentArtwork() {
+    const items = window.PORTFOLIO_DATA.present.items;
+    if (!items || items.length <= 1) return;
+    soundSynth.playSketch();
+    state.presentGalleryIndex = (state.presentGalleryIndex + 1) % items.length;
+    renderPresentArtwork();
+  }
+
+  function prevPresentArtwork() {
+    const items = window.PORTFOLIO_DATA.present.items;
+    if (!items || items.length <= 1) return;
+    soundSynth.playSketch();
+    state.presentGalleryIndex = (state.presentGalleryIndex - 1 + items.length) % items.length;
+    renderPresentArtwork();
+  }
+
+  // =========================================================================
+  // VIEW: FUTURE (OPEN SKETCHBOOK: THE INNER ORBITS & THE HUMANE CHAOS)
+  // =========================================================================
+  function setupFutureSketchbook() {
+    const futureData = window.PORTFOLIO_DATA.future;
+    if (!futureData) return;
+
+    // 1. Populate Left Page: 9-Grid (The Inner Orbits)
+    const orbitsContainer = document.getElementById('orbits-9grid');
+    if (orbitsContainer && futureData.innerOrbits) {
+      orbitsContainer.innerHTML = '';
+      futureData.innerOrbits.forEach((orbit, index) => {
+        const card = document.createElement('div');
+        card.className = 'orbit-card';
+        card.setAttribute('data-index', index);
+        
+        const thumbDiv = document.createElement('div');
+        thumbDiv.className = 'orbit-card-thumb';
+        const img = document.createElement('img');
+        setSafeImage(img, orbit);
+        thumbDiv.appendChild(img);
+
+        const label = document.createElement('div');
+        label.className = 'orbit-card-label';
+        label.textContent = orbit.title;
+
+        card.appendChild(thumbDiv);
+        card.appendChild(label);
+
+        card.addEventListener('click', () => {
+          soundSynth.playSketch();
+          openLightbox(orbit.title, orbit);
+        });
+        orbitsContainer.appendChild(card);
+      });
+    }
+
+    // 2. Populate Right Page: The Humane Chaos
+    const humaneCard = document.getElementById('humane-chaos-card');
+    if (humaneCard && futureData.humaneChaos && futureData.humaneChaos.length) {
+      const hc = futureData.humaneChaos[0];
+      const thumb = humaneCard.querySelector('.humane-chaos-thumb img');
+      if (thumb) {
+        setSafeImage(thumb, hc);
+      }
+      humaneCard.addEventListener('click', () => {
+        soundSynth.playSketch();
+        openLightbox(hc.title, hc);
+      });
+    }
+  }
+
+  // =========================================================================
+  // LIGHTBOX / INTERACTIVE FULLSCREEN ZOOM
+  // User Request: "có dấu x để tắt và có thể zoom"
+  // =========================================================================
+  function setupLightbox() {
+    els.lightboxClose.addEventListener('click', closeLightbox);
+    els.lightboxZoomIn.addEventListener('click', () => zoomLightbox(0.25));
+    els.lightboxZoomOut.addEventListener('click', () => zoomLightbox(-0.25));
+    els.lightboxZoomReset.addEventListener('click', resetLightboxZoom);
+
+    // Mouse wheel zoom
+    els.lightboxViewport.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      const delta = e.deltaY < 0 ? 0.2 : -0.2;
+      zoomLightbox(delta);
+    });
+
+    // Drag to Pan
+    els.lightboxViewport.addEventListener('mousedown', (e) => {
+      if (e.target.closest('.lightbox-btn')) return;
+      state.lightbox.isDragging = true;
+      state.lightbox.dragStartX = e.clientX - state.lightbox.panX;
+      state.lightbox.dragStartY = e.clientY - state.lightbox.panY;
+      els.lightboxViewport.classList.add('is-dragging');
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!state.lightbox.isDragging) return;
+      state.lightbox.panX = e.clientX - state.lightbox.dragStartX;
+      state.lightbox.panY = e.clientY - state.lightbox.dragStartY;
+      updateLightboxTransform();
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (state.lightbox.isDragging) {
+        state.lightbox.isDragging = false;
+        els.lightboxViewport.classList.remove('is-dragging');
+      }
+    });
+
+    // Double click to toggle 1x / 2x zoom
+    els.lightboxViewport.addEventListener('dblclick', (e) => {
+      if (e.target.closest('.lightbox-btn')) return;
+      if (state.lightbox.zoom > 1.2) {
+        resetLightboxZoom();
+      } else {
+        zoomLightbox(1.0);
+      }
+    });
+  }
+
+  function openLightbox(title, itemOrPath, fallbackFile) {
+    soundSynth.playPaperTurn();
+    state.lightbox.active = true;
+    state.lightbox.title = title;
+    state.lightbox.zoom = 1;
+    state.lightbox.panX = 0;
+    state.lightbox.panY = 0;
+
+    els.lightboxTitle.textContent = title;
+    setSafeImage(els.lightboxImg, itemOrPath, fallbackFile);
+    els.lightboxImg.alt = title;
+    updateLightboxTransform();
+
+    els.lightboxModal.classList.add('active');
+  }
+
+  function closeLightbox() {
+    soundSynth.playSketch();
+    state.lightbox.active = false;
+    els.lightboxModal.classList.remove('active');
+  }
+
+  function zoomLightbox(delta) {
+    soundSynth.playSketch();
+    state.lightbox.zoom = Math.max(0.6, Math.min(4.0, state.lightbox.zoom + delta));
+    updateLightboxTransform();
+  }
+
+  function resetLightboxZoom() {
+    soundSynth.playSketch();
+    state.lightbox.zoom = 1;
+    state.lightbox.panX = 0;
+    state.lightbox.panY = 0;
+    updateLightboxTransform();
+  }
+
+  function updateLightboxTransform() {
+    els.lightboxImgWrapper.style.transform = 
+      `translate(${state.lightbox.panX}px, ${state.lightbox.panY}px) scale(${state.lightbox.zoom})`;
+    els.lightboxZoomDisplay.textContent = `${Math.round(state.lightbox.zoom * 100)}%`;
+  }
+
+  // Expose to window & start on DOM ready
+  window.addEventListener('DOMContentLoaded', initApp);
+
+})();
+
+</script>
 
 </body>
 </html>
